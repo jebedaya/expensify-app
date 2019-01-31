@@ -11,7 +11,8 @@ exports[`should render ExpenseListItem with 1 expenses from fixture expenses 1`]
     </h3>
   </Link>
   <p>
-    $1.95
+    ₪
+    1.95
     -
     January 1st, 1970
   </p>
