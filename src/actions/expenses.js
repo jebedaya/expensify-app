@@ -32,16 +32,6 @@ export const removeExpense = ({id} = {}) => ({
     id
 });
 
-// export const startRemoveExpense = ({id} = {}) => {
-//     return (dispatch) => {
-//         return database.ref(`expenses/${id}`).remove().then(() => {
-//             console.log('was called!');
-//             dispatch(removeExpense({id}));
-//         });
-//     };
-
-// };
-
 export const startRemoveExpense = ({ id } = {}) => {
     return (dispatch) => {
       return database.ref(`expenses/${id}`).remove().then(() => {
@@ -57,6 +47,13 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+export const startEditExpese = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    };
+};
 
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
