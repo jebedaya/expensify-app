@@ -3,6 +3,7 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
 export default class ExpenseForm extends React.Component {
+    
     constructor(props) {
         super(props);
         
@@ -53,7 +54,9 @@ export default class ExpenseForm extends React.Component {
             });
         }
     };
-    render() {
+    render = () => {
+        const smallDevice = window.matchMedia('(max-width: 45rem)').matches;
+        const orientation = smallDevice ? 'vertical' : 'horizontal';
         return  (
             <form className="form" onSubmit={this.onSubmit}>
                 {this.state.error && <p className="form__error">{this.state.error}</p>}
@@ -80,6 +83,9 @@ export default class ExpenseForm extends React.Component {
                     numberOfMonths={1}
                     isOutsideRange={() => false}
                     displayFormat='DD/MM/YYYY'
+                    withPortal={false}
+                    orientation={orientation}
+                    withPortal={smallDevice}
                 />
                 <textarea
                     placeholder="Add a note for your expense (optional)"
@@ -93,5 +99,5 @@ export default class ExpenseForm extends React.Component {
                 </div>
             </form>
         )
-    }
+    };
 }
